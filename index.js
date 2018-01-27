@@ -1,5 +1,8 @@
 // om namah shivay
 
+// run gcloud beta functions deploy gcf-runtime-configurator --entry-point start --trigger-http
+// to deploy this function to gcf using the gcloud tool
+
 const start = (req, res) => {
     let html;
     if (!global.config) {
@@ -27,7 +30,7 @@ const start = (req, res) => {
 const loadConfig = () => {
 
     const google = require('googleapis');
-    const key = require('./runtime-configurator-credentials');
+    const key = require('./runtime-configurator-credentials'); // make sure your json credentials file is present at this location
     
     const jwtClient = new google.auth.JWT(
         key.client_email,
